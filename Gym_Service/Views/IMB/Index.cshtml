@@ -1,0 +1,30 @@
+﻿@model Gym_Service.Models.IBM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>IBM Calculator</h2>
+<div id="ibm-div">
+    @using (Html.BeginForm("Verify", "IBM", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                IBM
+            </tr>
+            <tr>
+                <td>Weight(Kg)</td>
+                <td>@Html.EditorFor(model => model.Weight)</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>Height(cm)</td>
+                <td>@Html.EditorFor(model => model.Height)</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="name" value="Login" /></td>
+            </tr>
+        </table>
+    }
+    </div>

@@ -1,0 +1,114 @@
+﻿@model Gym_Service.Models.RegisterModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Registration</h2>
+<div id="register-div">
+    @using (Html.BeginForm("AddCustomer", "Register", FormMethod.Post))
+    {
+    <table>
+        <tr>
+            <td></td>
+            <td style="text-decoration:underline">App Name</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.ConfirmPassword)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.ConfirmPassword)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.FirstName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.LastName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.ContactNumber)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.ContactNumber)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.ValidationMessageFor(model => model.ContactNumber)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <label class="field-validation-error">@Html.DisplayFor(model => model.RegisterError)</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="name" value="Register" />
+            </td>
+            <td><input type="button" value="Login" onclick="@("window.location.href='" + @Url.Action("Index", "Login") + "'");" /></td>
+        </tr>
+    </table>
+    }
+</div>
