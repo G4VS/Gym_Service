@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using Gym_Service.Models;
+using Newtonsoft.Json;
 
 namespace Gym_Service.Controllers
 {
@@ -13,34 +14,57 @@ namespace Gym_Service.Controllers
         // GET: IMB
         public ActionResult Index()
         {
-            return View();
+            return View(new IBM());
         }
-
-        public ActionResult CalculateIBM()
+        [HttpPost]
+        public JsonResult CalculateIBM(IBM i)
         {
-            IEnumerable<IBM> customer = null;
-            using(var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("");
-                var responceTask = client.GetAsync("customer");//////////////////////////
-                responceTask.Wait();
+           double BMI;
+           
+                i.BMIValue = (i.Weight / (i.Height * i.Height)) * 703;
+                BMI = i.BMIValue;
 
-                var result = responceTask.Result;
-                if(result.IsSuccessStatusCode)
-                {
-                    var readJob = result.Content.ReadAsAsync<IList<IBM>>();
-                    readJob.Wait();
-                    customer = readJob.Result;
+         
+            var json = JsonConvert.SerializeObject(BMI);
+            return Json(json,JsonRequestBehavior.AllowGet);
 
-                }else
-                {
-                    //show error
-                    customer = Enumerable.Empty<IBM>();
-                    ModelState.AddModelError(string.Empty, "Server error occured. Please contact admin for help!");
-                }
-
-            }
-            return View(customer);
         }
+
+        [HttpPost]
+        public JsonResult CalculateFatMen(IBM i)
+        {
+            double FVM;
+         
+                i.FatValueMen = 10.1 - (0.239 * i.Height) + (0.8 * i.AbdominalCircumference) - (0.5 * i.NeckCircumference);
+                FVM = i.FatValueMen;
+            
+          
+            var json = JsonConvert.SerializeObject(FVM);
+            return Json(json, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult CalculateFatWomen(IBM i)
+        {
+            double FVW;
+          
+         
+                i.FatValueWomen = 19.2 - (0.239 * i.Height) + (0.8 * i.AbdominalCircumference) - (0.5 * i.NeckCircumference);
+                FVW = i.FatValueWomen;
+            
+            var json = JsonConvert.SerializeObject(FVW);
+            return Json(json, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+
+
+
+
+
+
     }
 }

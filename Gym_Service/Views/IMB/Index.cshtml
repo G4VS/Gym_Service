@@ -5,26 +5,114 @@
 
 <h2>IBM Calculator</h2>
 <div id="ibm-div">
-    @using (Html.BeginForm("Verify", "IBM", FormMethod.Post))
+    @using (Html.BeginForm("CalculateIBM", "IMB", FormMethod.Post))
     {
         <table>
             <tr>
-                IBM
+                IBM Calculator
             </tr>
+
             <tr>
-                <td>Weight(Kg)</td>
-                <td>@Html.EditorFor(model => model.Weight)</td>
+                <td>Weight(Kg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>@Html.EditorFor(IBM => IBM.Weight)</td>
             </tr>
             <tr></tr>
+
             <tr>
                 <td>Height(cm)</td>
-                <td>@Html.EditorFor(model => model.Height)</td>
+                <td>@Html.EditorFor(IBM => IBM.Height)</td>
             </tr>
             <tr></tr>
+
+
+
+
+
             <tr>
                 <td></td>
-                <td><input type="submit" name="name" value="Login" /></td>
+                <td><input type="submit" id="BMIValue" name="Calculate" value="Calculate" /></td>
+            </tr>
+
+        </table>
+        <br>
+
+    }
+
+
+ 
+
+
+    @using (Html.BeginForm("CalculateFatMen", "IMB", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                Fat % Calculator (Men)
+
+            </tr>
+
+            <tr>
+                <td>Height(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.Height)</td>
+            </tr>
+            <tr></tr>
+
+            <tr>
+                <td>Abdominal Circumference(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.AbdominalCircumference)</td>
+            </tr>
+            <tr></tr>
+
+            <tr>
+                <td>Neck Circumference(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.NeckCircumference)</td>
+            </tr>
+            <tr></tr>
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" id="FVM" name="Calculate" value="Calculate" /></td>
+            </tr>
+        </table>
+        <br>
+    }
+
+
+  
+
+    @using (Html.BeginForm("CalculateFatWomen", "IMB", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                Fat % Calculator (Women)
+
+            </tr>
+
+            <tr>
+                <td>Height(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.Height)</td>
+            </tr>
+            <tr></tr>
+
+            <tr>
+                <td>Abdominal Circumference(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.AbdominalCircumference)</td>
+            </tr>
+            <tr></tr>
+
+            <tr>
+                <td>Neck Circumference(cm)</td>
+                <td>@Html.EditorFor(IBM => IBM.NeckCircumference)</td>
+            </tr>
+            <tr></tr>
+
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" id="FVW" name="Calculate" value="Calculate" /></td>
             </tr>
         </table>
     }
-    </div>
+
+</div>
